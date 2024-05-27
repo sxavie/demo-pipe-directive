@@ -1,0 +1,199 @@
+<p-panel header="data" class="p-1">
+  <p>
+    Heroes: <b> {{ heroes | json }} </b>
+  </p>
+  <p>
+    isOnline: <b> {{ isOnline }} </b>
+  </p>
+  <p>
+    User status: <b> {{ userStatus }} </b>
+  </p>
+  <p>
+    Note:
+    <b
+      >New Angular control flows or the defer block changes are available on the
+      release v17.0.0</b
+    >
+  </p>
+</p-panel>
+
+<div class="grid mt-2">
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="if directive" [toggleable]="true">
+      <p>Conditionally creates or disposes of subviews from the template.</p>
+      <hr>
+
+      <p-fieldset legend="*ngIf" [toggleable]="true">
+        <pre><code highlight-js>{{ commonIfCode }}</code></pre>
+
+        <ul>
+          <div *ngFor="let hero of heroes">
+            <li *ngIf="hero.canFly">{{ hero.name }}</li>
+          </div>
+        </ul>
+      </p-fieldset>
+
+      <p></p>
+
+      <p-fieldset legend="@if" [toggleable]="true">
+        <pre><code highlight-js >{{ newFlowIfCode }}</code></pre>
+
+        <ul>
+          @for(hero of heroes; track hero ) { @if( hero.canFly ) {
+          <li>{{ hero.name }}</li>
+          } }
+        </ul>
+      </p-fieldset>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="for directive" [toggleable]="true">
+      <p>Repeat a node for each item in a list.</p>
+      <hr>
+
+      <p-fieldset legend="*ngFor" [toggleable]="true">
+        <pre><code highlight-js>{{ commonForCode }}</code></pre>
+
+        <ul>
+          <li *ngFor="let hero of heroes">
+            {{ hero.name }}
+          </li>
+        </ul>
+      </p-fieldset>
+
+      <p></p>
+
+      <p-fieldset legend="@for" [toggleable]="true">
+        <pre><code highlight-js>{{ newFlowForCode }}</code></pre>
+
+        <ul>
+          @for(hero of heroes; track hero) {
+          <li>{{ hero.name }}</li>
+          }
+        </ul>
+      </p-fieldset>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="if else directive" [toggleable]="true">
+      <p>
+        When the expression evaluates to true, Angular renders the template
+        provided in a <b>then</b> clause, and when false or null, Angular
+        renders the template provided in an optional <b>else</b> clause. The
+        default template for the <b>else</b> clause is blank.
+      </p>
+
+      <hr />
+
+      <div class="col-12 md:col-12 flex gap-2 p-3">
+        <p-button label="Online" severity="success" (onClick)="setStatus(1)">
+        </p-button>
+        <p-button label="Offline" severity="danger" (onClick)="setStatus(0)">
+        </p-button>
+      </div>
+
+      <p-fieldset legend="*ngIf ; else" [toggleable]="true">
+        <pre><code highlight-js> {{ commonifElseCode }} </code></pre>
+
+        <div *ngIf="isOnline; else offlineBlock">
+          <i class="pi pi-circle-fill p-3" style="color: green"></i> User is
+          Online
+        </div>
+        <ng-template #offlineBlock>
+          <i class="pi pi-circle-fill p-3" style="color: red"></i> User is
+          Offline
+        </ng-template>
+      </p-fieldset>
+
+      <p-fieldset legend="@if @else" [toggleable]="true" class="p-2">
+        <pre><code highlight-js> {{ newifElseCode }} </code></pre>
+
+        @if(isOnline) {
+        <i class="pi pi-circle-fill p-3" style="color: green"></i> User is
+        Online } @else {
+        <i class="pi pi-circle-fill p-3" style="color: red"></i> User is Offline
+        }
+      </p-fieldset>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset legend="switch directive" [toggleable]="true">
+      <span>
+        The [ngSwitch] directive on a container specifies an expression to match
+        against. The expressions to match are provided by ngSwitchCase
+        directives on views within the container.
+        <ul>
+          <li>Every view that matches is rendered.</li>
+          <li>
+            If there are no matches, a view with the ngSwitchDefault directive
+            is rendered.
+          </li>
+          <li>
+            Elements within the [NgSwitch] statement but outside of any
+            NgSwitchCase or ngSwitchDefault directive are preserved at the
+            location.
+          </li>
+        </ul>
+      </span>
+      <hr />
+
+      <div class="m-2 p-4">
+        <div class="flex flex-wrap justify-content-center gap-1 pb-4">
+          <p-button *ngFor="let hero of heroes" [label]="hero.name" (onClick)="setCurrentHero(hero)" class="m-1"></p-button>
+        </div>
+
+        <span>My favorite hero is: <b style="color: green;">{{  favoriteHero?.name }}</b></span>
+      </div>
+
+      <p-fieldset legend="[ngSwitch]" [toggleable]="true">
+
+        <pre><code highlight-js> {{ commonSwitchCode }} </code></pre>
+
+        <div [ngSwitch]="favoriteHero?.name" class="pop-container flex justify-content-center">
+          <img *ngSwitchCase="'Spiderman'" src="../../../../assets/spider-man.png" [alt]="favoriteHero?.name">
+          <img *ngSwitchCase="'Wolverine'" src="../../../../assets/wolverine.png" [alt]="favoriteHero?.name">
+          <img *ngSwitchCase="'Thor'" src="../../../../assets/thor.png" [alt]="favoriteHero?.name">
+          <img *ngSwitchCase="'Ironman'" src="../../../../assets/iron-man.png" [alt]="favoriteHero?.name">
+          <img *ngSwitchCase="'Superman'" src="../../../../assets/super-man.png" [alt]="favoriteHero?.name">
+          <div *ngSwitchDefault>
+            <h1> Select your favorite hero </h1>
+          </div>
+        </div>
+
+
+      </p-fieldset>
+
+      <p-fieldset legend="@switch @case" [toggleable]="true" class="p-2">
+        <pre><code highlight-js> {{ newSwitchForCode }} </code></pre>
+
+        <div class="pop-container flex justify-content-center">
+          @switch (favoriteHero?.name) {
+            @case ('Spiderman') {
+              <img src="../../../../assets/spider-man.png" [alt]="favoriteHero?.name">
+            }
+            @case ('Wolverine') {
+              <img src="../../../../assets/wolverine.png" [alt]="favoriteHero?.name">
+            }
+            @case ('Thor') {
+              <img src="../../../../assets/thor.png" [alt]="favoriteHero?.name">
+            }
+            @case ('Ironman') {
+              <img src="../../../../assets/iron-man.png" [alt]="favoriteHero?.name">
+            }
+            @case ('Superman') {
+              <img src="../../../../assets/super-man.png" [alt]="favoriteHero?.name">
+            }
+            @default {
+              <h1> Select your favorite hero </h1>
+            }
+          }
+        </div>
+
+      </p-fieldset>
+
+    </p-fieldset>
+  </div>
+</div>

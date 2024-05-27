@@ -1,0 +1,133 @@
+<p-panel header="Strings" class="p-1">
+  <p>
+    Name: <b> {{ name }} </b>
+  </p>
+  <p>
+    Country: <b> {{ country }} </b>
+  </p>
+  <p>
+    City: <b> {{ city }} </b>
+  </p>
+  <p>
+    Gretting: <b> {{ gretting }} </b>
+  </p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-4">
+    <p-card header="uppercase">
+      <p>{{ name | uppercase }}</p>
+      <p>{{ country | uppercase }}</p>
+      <p>{{ city | uppercase }}</p>
+      <p>{{ gretting | uppercase }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="lowercase">
+      <p>{{ name | lowercase }}</p>
+      <p>{{ country | lowercase }}</p>
+      <p>{{ city | lowercase }}</p>
+      <p>{{ gretting | lowercase }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card header="titlecase">
+      <p>{{ name | titlecase }}</p>
+      <p>{{ country | titlecase }}</p>
+      <p>{{ city | titlecase }}</p>
+      <p>{{ gretting | titlecase }}</p>
+    </p-card>
+  </div>
+</div>
+
+<p-panel header="Dates" class="p-1">
+  <p> Date: <b> {{ today }} </b> </p>
+</p-panel>
+
+<div class="grid">
+
+  <div class="col-12 md:col-9">
+    <p-card>
+      <div class="flex flex-row flex-wrap col-12 gap-1">
+        <div class="flex col-5">
+          <ol>
+            <li> date </li>
+            <li> date:'short' </li>
+            <li> date:'long' </li>
+            <li> date:'MMMM' </li>
+            <li> date:'MMMM dd, yyyy' </li>
+          </ol>
+        </div>
+        <div class="flex col-6">
+          <ol>
+            <li> {{ today | date }}</li>
+            <li> {{ today | date:'short' }}</li>
+            <li> {{ today | date:'long' }}</li>
+            <li> {{ today | date:'MMMM' }}</li>
+            <li> {{ today | date:'MMMM dd, yyyy' }}</li>
+          </ol>
+        </div>
+      </div>
+    </p-card>
+  </div>
+
+</div>
+
+
+<p-panel header="Numbers" class="p-1">
+  <p> Net Income: <b> {{ netIncome }} </b> </p>
+  <p> Percentage: <b> {{ precentage }} </b> </p>
+</p-panel>
+
+<div class="grid">
+  <div class="col-12 md:col-3">
+    <p-card header="number">
+      <p>{{ netIncome | number }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="number:'1.1'">
+      <p>{{ netIncome | number:'1.1' }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="number:'1.2'">
+      <p>{{ netIncome | number:'1.2' }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="number:'1.3'">
+      <p>{{ netIncome | number:'1.3' }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="percent">
+      <p>{{ precentage / 100 | percent }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="percent:'1.1'">
+      <p>{{ precentage / 100 | percent:'1.1' }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="percent:'1.2'">
+      <p>{{ precentage / 100 | percent:'1.2' }}</p>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-3">
+    <p-card header="percent:'1.3'">
+      <p>{{ precentage / 100 | percent:'1.3' }}</p>
+    </p-card>
+  </div>
+
+</div>

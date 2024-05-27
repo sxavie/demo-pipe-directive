@@ -1,0 +1,7 @@
+.pop-container{
+  width:100%;
+  margin: auto;
+  img {
+    height:300px
+  }
+}

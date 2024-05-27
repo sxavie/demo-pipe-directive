@@ -1,0 +1,17 @@
+.mexico-css-class {
+  .left-side {
+    background-color: #005d40;
+  }
+  .middle {
+    background-color: white;
+    color: black;
+  }
+  .right-side {
+    background-color: #ce1127;
+  }
+}
+.styles-card {
+  div p {
+    font-size:1.5rem
+  }
+}

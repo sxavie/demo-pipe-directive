@@ -1,0 +1,118 @@
+<p-panel header="Attribute Directives" class="p-1">
+  <p>
+    Change the appearance or behavior of DOM elements and Angular components
+    with attribute directives.
+  </p>
+
+  <p>
+    Note: If your component is configured with <b>standalone: true</b>, then you
+    need to add FormsModule to the component’s imports array. Since it’s
+    independent, we must include all necessary dependencies in the imports array
+  </p>
+
+  <pre><code highlight-js [lang]="'typescript'"> {{ getFormModuleImportCode() }} </code></pre>
+
+  <h3>Data:</h3>
+  <p>
+    searchValue: <b>{{ searchValue }}</b>
+  </p>
+  <p>
+    nameValue: <b>{{ nameValue }}</b>
+  </p>
+  <p>
+    countryValue: <b>{{ countryValue }}</b>
+  </p>
+</p-panel>
+
+<div class="grid mt-2">
+  <div class="col-12 md:col-4">
+    <p-card subheader="1 way binding - [ngModel]">
+      <span class="p-input-icon-left">
+        <i class="pi pi-search"></i>
+
+        <input
+          pInputText
+          type="text"
+          placeholder="What are you looking for?"
+          [ngModel]="searchValue"
+        />
+      </span>
+
+      <pre><code highlight-js> {{ getOneWayBindingCode() }} </code></pre>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card subheader="2 way binding - [(ngModel)]">
+      <span class="p-input-icon-left">
+        <i class="pi pi-user"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="What's your name?"
+          [(ngModel)]="nameValue"
+        />
+      </span>
+
+      <pre><code highlight-js> {{ getTwoWayBindingCode() }} </code></pre>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card subheader="2 way binding - ngModelChange ">
+      <span class="p-input-icon-left">
+        <i class="pi pi-globe"></i>
+        <input
+          type="text"
+          pInputText
+          placeholder="Where do you live?"
+          [ngModel]="countryValue"
+          (ngModelChange)="countryValueChange($event)"
+        />
+      </span>
+
+      <pre><code highlight-js [lang]="'typescript'"> {{ countryValueChange }} </code></pre>
+      <pre><code highlight-js> {{ getNgModelChangeCode() }} </code></pre>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card subheader="[ngClass]">
+      <div [ngClass]="countryValue === 'Mexico' ? 'mexico-css-class' : ''">
+        <span class="left-side">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+        <span class="middle"> {{ countryValue }} </span>
+        <span class="right-side">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+      </div>
+
+      <pre><code highlight-js> {{ getNgClassCode() }} </code></pre>
+      <pre><code highlight-js [lang]="'css'"> {{ getNgClassCssCode() }} </code></pre>
+
+      <span class="text-md">
+        <b>Note:</b> ngClass & ngStyle are part of the <i>CommonModule</i>
+      </span>
+    </p-card>
+  </div>
+
+  <div class="col-12 md:col-4">
+    <p-card subheader="[ngStyle]" class="styles-card">
+      <pre><code highlight-js> {{ getNgStyleInlineCode() }} </code></pre>
+
+      <div [ngStyle]="{ 'background-color': 'green' }">
+        <p>{{ nameValue }}</p>
+      </div>
+
+      <pre><code highlight-js [lang]="'css'"> {{ getNgStyleConditional() }} </code></pre>
+      <div
+        [ngStyle]="{
+          'background-color': nameValue === 'Ronaldo' ? 'red' : 'blue'
+        }"
+      >
+        <p>{{ nameValue }}</p>
+      </div>
+
+      <span class="text-md">
+        <b>Note:</b> ngClass & ngStyle are part of the <i>CommonModule</i>
+      </span>
+    </p-card>
+  </div>
+</div>
